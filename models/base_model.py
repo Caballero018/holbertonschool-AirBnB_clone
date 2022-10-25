@@ -4,7 +4,7 @@ Module Base
 get id and time changes
 """
 
-'''Imports'''
+
 import uuid
 from datetime import datetime
 
@@ -25,7 +25,7 @@ class BaseModel:
     def save(self):
         '''save method to updates the attribute updated_at'''
         self.updated_at = datetime.now()
-    
+
     def to_dict(self):
         '''JSON to dictionary'''
         my_dictionary = self.__dict__.copy()
