@@ -13,14 +13,19 @@ class BaseModel:
     '''Base class to string and datas'''
     def __init__(self, *args, **kwargs):
         '''initialization of datas od dictionary's'''
+        if kwargs:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+        else:
+            self.updated_at = datetime.now()
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
-            self.updated_at = datetime.now()
-
 
     def __str__(self):
         '''str'''
-        return ("[{}] ({}) {}".format(type(self).__name__, self.id, self.__dict__))
+        return ("[{}] ({}) {}".format(
+                type(self).__name__, self.id, self.__dict__
+                ))
 
     def save(self):
         '''save method to updates the attribute updated_at'''
@@ -28,8 +33,10 @@ class BaseModel:
 
     def to_dict(self):
         '''JSON to dictionary'''
-        my_dictionary = self.__dict__.copy()
-        my_dictionary['__class__'] = type(self).__name__
-        my_dictionary["created_at"] = my_dictionary["created_at"].isoformat()
-        my_dictionary["updated_at"] = my_dictionary["updated_at"].isoformat()
-        return my_dictionary
+        dictionary = self.__dict__.copy()
+        for k in dictionary.keys():
+            if k == "updated_at":
+                dictionary[k] = dictionary[k].isoformat()
+            if k == "created_at":
+                dictionary[k] = dictionary[k].isoformat()
+        return dictionary
