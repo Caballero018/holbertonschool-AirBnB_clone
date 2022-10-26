@@ -72,15 +72,6 @@ EOF  help  quit
 (hbnb) 
 $
 ```
-# Tasks
-| 0. README, AUTHORS |
-| ------ |
-Write a README.md:
-description of the project
-description of the command interpreter:
-how to start it
-how to use it
-examples
-You should have an AUTHORS file at the root of your repository, listing all individuals having contributed content to the repository. For format, reference Docker’s AUTHORS page
-You should use branches and pull requests on GitHub - it will help you as team to organize your work
+<a href = 'https://www.github.com/Crisgrva'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/github.svg"/></a> [@Alejandro Caballero](https://github.com/Caballero018) | [@Juan Esteban](https://github.com/JuanGarcia0418)
 
+<a href = 'https://www.twitter.com/crisgrvc'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/twitter.svg"/></a> [@Alejandro](https://twitter.com/Alejand51178128) | [@Juan Esteban]()
