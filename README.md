@@ -72,6 +72,7 @@ EOF  help  quit
 (hbnb) 
 $
 ```
-<a href = 'https://www.github.com/Crisgrva'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/github.svg"/></a> [@Alejandro Caballero](https://github.com/Caballero018) | [@Juan Esteban](https://github.com/JuanGarcia0418)
 
-<a href = 'https://www.twitter.com/crisgrvc'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/twitter.svg"/></a> [@Alejandro](https://twitter.com/Alejand51178128) | [@Juan Esteban]()
+### *Alejandro Caballero Granado* <a href = 'https://github.com/Caballero018'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/github.svg"/></a> <a href = 'https://twitter.com/Alejand51178128'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/twitter.svg"/></a><a href = 'https://www.linkedin.com/in/alejandro-caballero-9a3244217/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BZaLuYB%2B%2FQRKNfYAowl57Sg%3D%3D'> <img width = '32px' align= 'center' src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"/></a>
+
+### *Juan Esteban Hernandez Pedraza* <a href = 'https://github.com/Jehp00'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/github.svg"/></a> <a href = 'https://twitter.com/Alejand51178128'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/twitter.svg"/></a><a href = 'https://www.linkedin.com/in/alejandro-caballero-9a3244217/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BZaLuYB%2B%2FQRKNfYAowl57Sg%3D%3D'> <img width = '32px' align= 'center' src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"/></a>
