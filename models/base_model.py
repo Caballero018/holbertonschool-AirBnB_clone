@@ -37,6 +37,9 @@ class BaseModel:
     def to_dict(self):
         '''JSON to dictionary'''
         dictionary = self.__dict__.copy()
-        dictionary['created_at'] = dictionary['created_at'].isoformat()
-        dictionary['updated_at'] = dictionary['updated_at'].isoformat()
+        for k in dictionary.keys():
+            if k == "updated_at":
+                dictionary[k] = dictionary[k].isoformat()
+            if k == "created_at":
+                dictionary[k] = dictionary[k].isoformat()
         return dictionary
