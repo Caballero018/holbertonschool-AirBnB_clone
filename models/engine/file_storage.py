@@ -34,5 +34,8 @@ class FileStorage:
         """reloads and updates the previos dictionary"""
         if not os.path.isfile(FileStorage.__file_path):
             return
-        with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
-            FileStorage.__objects = json.load(f)
+        try:
+            with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
+                FileStorage.__objects = json.load(f)
+        except Exception:
+            pass 
