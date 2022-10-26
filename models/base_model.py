@@ -16,7 +16,8 @@ class BaseModel:
         '''initialization of datas od dictionary's'''
         if kwargs:
             for key, value in kwargs.items():
-                setattr(self, key, value)
+                if key != "__class__":
+                    setattr(self, key, value)
         else:
             self.updated_at = datetime.now()
             self.id = str(uuid.uuid4())
@@ -42,4 +43,5 @@ class BaseModel:
                 dictionary[k] = dictionary[k].isoformat()
             if k == "created_at":
                 dictionary[k] = dictionary[k].isoformat()
+        dictionary["__class__"] = self.__class__.__name__
         return dictionary
