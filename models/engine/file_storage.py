@@ -26,7 +26,7 @@ class FileStorage:
 
     def save(self):
         """Save the dict in JSON file"""
-         with open(FileStorage.__file_path, "w+") as f:
+        with open(FileStorage.__file_path, "w+") as f:
             d = {k: str(v) for k, v in FileStorage.__objects.items()}
             json.dump(d, f)
 
