@@ -7,6 +7,7 @@ get id and time changes
 
 import uuid
 from datetime import datetime
+from models import storage
 
 
 class BaseModel:
@@ -20,6 +21,7 @@ class BaseModel:
             self.updated_at = datetime.now()
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
+            storage.new(self)
 
     def __str__(self):
         '''str'''
@@ -30,13 +32,11 @@ class BaseModel:
     def save(self):
         '''save method to updates the attribute updated_at'''
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         '''JSON to dictionary'''
         dictionary = self.__dict__.copy()
-        for k in dictionary.keys():
-            if k == "updated_at":
-                dictionary[k] = dictionary[k].isoformat()
-            if k == "created_at":
-                dictionary[k] = dictionary[k].isoformat()
+        dictionary['created_at'] = dictionary['created_at'].isoformat()
+        dictionary['updated_at'] = dictionary['updated_at'].isoformat()
         return dictionary
