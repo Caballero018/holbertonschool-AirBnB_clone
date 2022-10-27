@@ -33,7 +33,7 @@ class HBNBCommand(cmd.Cmd, BaseModel):
                 print(inp.id)
             except NameError:
                 print("** class doesn't exist **")
-            storage.save()
+            inp.save()
         else:
             print("** class name missing **")
 
