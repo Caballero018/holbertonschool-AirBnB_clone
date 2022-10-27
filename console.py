@@ -18,6 +18,9 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, inp):
         "Doc"
         return True
+    
+    def do (sef, inp):
+        return
 
     def help_EOF(self):
         "Doc"
