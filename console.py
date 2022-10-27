@@ -31,9 +31,9 @@ class HBNBCommand(cmd.Cmd, BaseModel):
                 inp = inp + "()"
                 inp = eval(inp)
                 print(inp.id)
+                inp.save()
             except NameError:
                 print("** class doesn't exist **")
-            inp.save()
         else:
             print("** class name missing **")
 
