@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 "Doc"
 import cmd
-import copy
-from attr import Attribute
 from models.base_model import BaseModel
 
 
