@@ -8,6 +8,7 @@ from models import storage
 class HBNBCommand(cmd.Cmd, BaseModel):
     "Doc"
     prompt = "(hbnb) "
+    Classes = {'BaseModel'}
 
     def do_quit(self, inp):
         "Doc"
@@ -42,8 +43,8 @@ class HBNBCommand(cmd.Cmd, BaseModel):
         if len(inp) == 0:
             print("** class name missing **")
             return
-        args = split(inp)
-        if args[0] != 'BaseModel':
+        args = parse(inp)
+        if args[0] != HBNBCommand.Classes:
             print("** class doesn't exist **")
             return
         try:
