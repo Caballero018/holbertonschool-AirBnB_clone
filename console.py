@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 "Doc"
 import cmd
+import copy
+from attr import Attribute
 from models.base_model import BaseModel
 
 
@@ -43,10 +45,12 @@ class HBNBCommand(cmd.Cmd, BaseModel):
                 inpu = inp.split()
                 inpu[0] = inpu[0] + "()"
                 inpu[0] = eval(inpu[0])
+                inpu[0].id = "12"
                 if inpu[0].id == inpu[1]:
                     print(inpu[0])
                 else:
                     print("** no instance found **")
+                    print(inpu[0].id)
             except NameError:
                 print("** class doesn't exist **")
             except IndexError:
