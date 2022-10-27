@@ -5,8 +5,7 @@ Module file_storage that add the dicts
 
 
 import os
-import json
-import datetime
+import json 
 
 
 class FileStorage:
@@ -32,11 +31,15 @@ class FileStorage:
 
     def reload(self):
         """reloads and updates the previos dictionary"""
+        from models.base_model import BaseModel
         if not os.path.isfile(FileStorage.__file_path):
             return
         try:
             with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
-                FileStorage.__objects = json.load(f)
+                loaded_dict = json.load(f)
 
-        except Exception:
+                for key, value in loaded_dict.items():
+                    obj = eval(value["__class__"])(**value)
+                    FileStorage.__objects[key] = obj
+        except Exception as e:
             pass
