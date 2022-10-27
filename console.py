@@ -45,7 +45,7 @@ class HBNBCommand(cmd.Cmd, BaseModel):
                 inpu[0] = eval(inpu[0])
                 if inpu[0].id == inpu[1]:
                     print(inpu[0])
-                else:
+                elif not inpu[0].id:
                     print("** no instance found **")
             except NameError:
                 print("** class doesn't exist **")
