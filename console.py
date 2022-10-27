@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 "Doc"
 import cmd
+from models.base_model import BaseModel
 
 
-class HBNBCommand(cmd.Cmd):
+class HBNBCommand(cmd.Cmd, BaseModel):
     "Doc"
     prompt = "(hbnb) "
 
@@ -23,8 +24,12 @@ class HBNBCommand(cmd.Cmd):
         "Doc"
         print("Quit command to exit the program")
 
-    def emptyline(self):
-        pass
+
+    def do_create(self, inp):
+        if inp == "BaseModel":
+            inp = BaseModel()
+            print(inp.id)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
