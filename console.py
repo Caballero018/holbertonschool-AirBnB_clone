@@ -2,6 +2,7 @@
 "Doc"
 import cmd
 from models.base_model import BaseModel
+from models import storage
 
 
 class HBNBCommand(cmd.Cmd, BaseModel):
@@ -38,21 +39,27 @@ class HBNBCommand(cmd.Cmd, BaseModel):
             print("** class name missing **")
 
     def do_show(self, inp):
-        if inp:
-            try:
-                inpu = inp.split()
-                inpu[0] = inpu[0] + "()"
-                inpu[0] = eval(inpu[0])
-                if inpu[0].id == inpu[1]:
-                    print(inpu[0])
-                elif not inpu.id:
-                    print("** no instance found **")
-            except NameError:
-                print("** class doesn't exist **")
-            except IndexError:
-                print("** instance id missing **")
-        else:
+        if len(inp) == 0:
             print("** class name missing **")
+            return
+        args = split(inp)
+        if args[0] != 'BaseModel':
+            print("** class doesn't exist **")
+            return
+        try:
+            if args[1]:
+                out = "{}.{}".format(args[0], args[1])
+                if out not in storage.all().keys():
+                    print("** no instance found **")
+                else:
+                    print(storage.all()[out])
+        except IndexError:
+            print("** instance id missing **")
+            return
+
+
+    def to_destroy(self, inp):
+        pass
 
 
 if __name__ == '__main__':
