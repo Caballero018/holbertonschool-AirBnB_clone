@@ -24,6 +24,7 @@ class HBNBCommand(cmd.Cmd, BaseModel):
         "Doc"
         print("Quit command to exit the program")
 
+
     def do_create(self, inp):
         if inp == "BaseModel":
             inp = BaseModel()
