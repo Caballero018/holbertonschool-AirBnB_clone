@@ -3,13 +3,13 @@
 import cmd
 from models.base_model import BaseModel
 from models import storage
-import models
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd, BaseModel):
     "Doc"
     prompt = "(hbnb) "
-    Classes = ["BaseModel"]
+    Classes = ["BaseModel", "User"]
 
     def do_quit(self, inp):
         "Doc"
@@ -75,37 +75,15 @@ class HBNBCommand(cmd.Cmd, BaseModel):
 
 
     def do_all(self, inp):
-        if inp not in HBNBCommand.Classes:
-            print("** class doesn't exist **")
-        else:
+        args_str = inp.split()
+        if not inp or args_str[0] in HBNBCommand.Classes:
             str_l = []
             objs = storage.all()
             for ins in objs.values():
                 str_l.append(ins.__str__())
             print(str_l)
-
-    def do_update(self, inp):
-        args = inp.split()
-        try:
-            if not args:
-                print("** class name missing **")
-            elif args[0] not in HBNBCommand.Classes:
-                print("** class doesn't exist **")
-            elif len(args) == 1:
-                print("** instance id missing **")
-            elif len(args) == 2:
-                print("** attribute name missing **")
-            elif len(args) == 3:
-                print("** value missing **")
-            objs = storage.all()
-            instance = args[0] + '.' + args[1]
-            if instance in objs.keys():
-                setattr(objs[instance], args[2], eval(args[3]))
-            else:
-                print("** no instance found **")
-        except IndexError:
-            pass
-            
+        else:
+            print("** class doesn't exist **")
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
