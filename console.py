@@ -9,6 +9,7 @@ import models
 class HBNBCommand(cmd.Cmd, BaseModel):
     "Doc"
     prompt = "(hbnb) "
+    Classes = ["BaseModel"]
 
     def do_quit(self, inp):
         "Doc"
