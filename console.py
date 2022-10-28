@@ -9,6 +9,15 @@ class HBNBCommand(cmd.Cmd, BaseModel):
     "Doc"
     prompt = "(hbnb) "
 
+    class_id = {
+        "User": "user",
+        "BaseModel": "base_model",
+        "State": "state",
+        "City": "city",
+        "Amenity": "amenity",
+        "Place": "place",
+        "Review": "review"}
+
     def do_quit(self, inp):
         "Doc"
         return True
@@ -55,22 +64,25 @@ class HBNBCommand(cmd.Cmd, BaseModel):
         else:
             print("** class name missing **")
 
-    def do_destroy(self, inp):
-        if inp:
-            try:
-                inpu = inp.split()
-                ids = inpu[0] + "." + inpu[1]
-                if not models.storage._FileStorage__objects.get(ids):
-                    print("** no instance found **")
-                else:
-                    object = models.storage._FileStorage__objects[ids]
-                    print(object)
-            except NameError:
-                print("** class doesn't exist **")
-            except IndexError:
-                print("** instance id missing **")
-        else:
+    def do_show(self, line):
+        """Prints the string representation of an
+            instance based on the class name and id"""
+        line_read = line.split(" ")
+        if line_read == ['']:
             print("** class name missing **")
+            return
+        elif line_read[0] not in HBNBCommand.class_id.keys():
+            print("** class doesn't exist **")
+            return
+        elif len(line_read) < 2:
+            print("** instance id missing **")
+            return
+        conct = line_read[0] + "." + line_read[1]
+        if not models.storage._FileStorage__objects.get(conct):
+            print("** no instance found **")
+        else:
+            obj = models.storage._FileStorage__objects[conct]
+            print(obj)
 
     def do_all(self, inp):
         if inp:
