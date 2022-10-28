@@ -3,13 +3,13 @@
 import cmd
 from models.base_model import BaseModel
 from models import storage
-import models
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd, BaseModel):
     "Doc"
     prompt = "(hbnb) "
-    Classes = ["BaseModel"]
+    Classes = ["BaseModel", "User"]
 
     def do_quit(self, inp):
         "Doc"
@@ -85,6 +85,8 @@ class HBNBCommand(cmd.Cmd, BaseModel):
         else:
             print("** class doesn't exist **")
 
+    def do_update():
+        pass
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

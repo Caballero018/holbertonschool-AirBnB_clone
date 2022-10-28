@@ -5,7 +5,7 @@ Module file_storage that add the dicts
 
 
 import os
-import json 
+import json
 
 
 class FileStorage:
@@ -32,6 +32,7 @@ class FileStorage:
     def reload(self):
         """reloads and updates the previos dictionary"""
         from models.base_model import BaseModel
+        from models.user import User
         if not os.path.isfile(FileStorage.__file_path):
             return
         try:
