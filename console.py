@@ -60,10 +60,10 @@ class HBNBCommand(cmd.Cmd, BaseModel):
         if inp:
             try:
                 inpu = inp.split()
-                inpu[0] = inpu[0] + "()"
-                inpu[0] = eval(inpu[0])
-                if inpu[0].id == inpu[1]:
-                    del inpu[0].id
+                obj_dic = storage.all()
+                obje_key = inpu[0] + "." + inpu[1]
+                if obje_key in obj_dic:
+                    del obj_dic[obje_key]
                 else:
                     print("** no instance found **")
             except NameError:
