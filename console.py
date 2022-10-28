@@ -75,11 +75,14 @@ class HBNBCommand(cmd.Cmd, BaseModel):
 
 
     def do_all(self, inp):
-        if inp:
-            inp = inp + "()"
-            inpu = eval(inp)
+        if inp in HBNBCommand.Classes:
+            str_l = []
+            objs = storage.all()
+            for ins in objs.values():
+                str_l.append(ins.__str__())
+            print(str_l)
         else:
-            print("** class name missing **")
+            print("** class doesn't exist **")
 
 
 if __name__ == '__main__':
