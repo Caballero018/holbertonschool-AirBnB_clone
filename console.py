@@ -69,6 +69,7 @@ class HBNBCommand(cmd.Cmd, BaseModel):
             instance = args[0] + '.' + args[1]
             if instance in objs.keys():
                 del objs[instance]
+                storage.save()
             else:
                 print("** no instance found **")
 
