@@ -9,7 +9,8 @@ from models.user import User
 class HBNBCommand(cmd.Cmd, BaseModel):
     "Doc"
     prompt = "(hbnb) "
-    Classes = ["BaseModel", "User"]
+    Classes = ["BaseModel", "User", "Amenity", "City",
+                "Place", "Review", "State"]
 
     def do_quit(self, inp):
         "Doc"
@@ -27,7 +28,6 @@ class HBNBCommand(cmd.Cmd, BaseModel):
         "Doc"
         print("Quit command to exit the program")
 
-
     def do_create(self, inp):
         if inp:
             try:
@@ -39,6 +39,11 @@ class HBNBCommand(cmd.Cmd, BaseModel):
                 print("** class doesn't exist **")
         else:
             print("** class name missing **")
+
+    def emptyline(self):
+        '''empty line
+        '''
+        pass
 
     def do_show(self, inp):
         args = inp.split()
@@ -73,7 +78,6 @@ class HBNBCommand(cmd.Cmd, BaseModel):
             else:
                 print("** no instance found **")
 
-
     def do_all(self, inp):
         args_str = inp.split()
         if not inp or args_str[0] in HBNBCommand.Classes:
@@ -107,6 +111,7 @@ class HBNBCommand(cmd.Cmd, BaseModel):
                 print("** class doesn't exist **")
         except IndexError:
             pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

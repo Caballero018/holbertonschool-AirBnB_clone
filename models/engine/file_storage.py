@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Module file_storage that add the dicts
+Program called console.py that contains the
+entry point of the command interpreter
 """
 
 
@@ -33,6 +34,11 @@ class FileStorage:
         """reloads and updates the previos dictionary"""
         from models.base_model import BaseModel
         from models.user import User
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.place import Place
+        from models.review import Review
         if not os.path.isfile(FileStorage.__file_path):
             return
         try:
