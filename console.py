@@ -57,21 +57,21 @@ class HBNBCommand(cmd.Cmd, BaseModel):
                 print("** no instance found **")
 
     def do_destroy(self, inp):
-        if inp:
-            try:
-                inpu = inp.split()
-                obj_dic = storage.all()
-                obje_key = inpu[0] + "." + inpu[1]
-                if obje_key in obj_dic:
-                    del obj_dic[obje_key]
-                else:
-                    print("** no instance found **")
-            except NameError:
-                print("** class doesn't exist **")
-            except IndexError:
-                print("** instance id missing **")
-        else:
+        args = inp.split()
+        if not args:
             print("** class name missing **")
+        elif args[0] not in HBNBCommand.Classes:
+            print("** class doesn't exist **")
+        elif len(args) == 1:
+            print("** instance id missing **")
+        else:
+            objs = storage.all()
+            instance = args[0] + '.' + args[1]
+            if instance in objs.keys():
+                del objs[instance]
+            else:
+                print("** no instance found **")
+
 
     def do_all(self, inp):
         if inp:
