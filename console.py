@@ -88,22 +88,22 @@ class HBNBCommand(cmd.Cmd, BaseModel):
     def do_update(self, inp):
         args = inp.split()
         try:
-            if not args:
-                print("* class name missing *")
+            if not inp:
+                print("** class name missing **")
             elif args[0] not in HBNBCommand.Classes:
-                print("* class doesn't exist *")
+                print("** class doesn't exist **")
             elif len(args) == 1:
-                print("* instance id missing *")
+                print("** instance id missing **")
             elif len(args) == 2:
-                print("* attribute name missing *")
+                print("** attribute name missing **")
             elif len(args) == 3:
-                print("* value missing *")
+                print("** value missing **")
             objs = storage.all()
             instance = args[0] + '.' + args[1]
             if instance in objs.keys():
                 setattr(objs[instance], args[2], eval(args[3]))
             else:
-                print("* no instance found *")
+                print("** no instance found **")
         except IndexError:
             pass
 
