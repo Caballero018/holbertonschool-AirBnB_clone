@@ -58,3 +58,4 @@ class HBNBCommand(cmd.Cmd, BaseModel):
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
+
