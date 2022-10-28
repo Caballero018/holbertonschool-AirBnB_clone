@@ -8,7 +8,7 @@ from models import storage
 class HBNBCommand(cmd.Cmd, BaseModel):
     "Doc"
     prompt = "(hbnb) "
-    Classes = {'BaseModel'}
+    Classes = ["BaseModel"]
 
     def do_quit(self, inp):
         "Doc"
@@ -40,27 +40,37 @@ class HBNBCommand(cmd.Cmd, BaseModel):
             print("** class name missing **")
 
     def do_show(self, inp):
-        if len(inp) == 0:
+        args = inp.split()
+        if not args:
             print("** class name missing **")
-            return
-        args = parse(inp)
-        if args[0] != HBNBCommand.Classes:
+        elif args[0] not in HBNBCommand.Classes:
             print("** class doesn't exist **")
-            return
-        try:
-            if args[1]:
-                out = "{}.{}".format(args[0], args[1])
-                if out not in storage.all().keys():
-                    print("** no instance found **")
-                else:
-                    print(storage.all()[out])
-        except IndexError:
+        elif len(args) == 1:
             print("** instance id missing **")
-            return
-
+        else:
+            objs = storage.all()
+            instance = args[0] + '.' + args[1]
+            if instance in objs.keys():
+                print(objs[instance])
+            else:
+                print("** no instance found **")
 
     def to_destroy(self, inp):
-        pass
+         if inp:
+            try:
+                inpu = inp.split()
+                obj_dic = storage.all()
+                obje_key = inpu[0] + "." + inpu[1]
+                if obje_key in obj_dic:
+                    del obj_dic[obje_key]
+                else:
+                    print("* no instance found *")
+            except NameError:
+                print("* class doesn't exist *")
+            except IndexError:
+                print("* instance id missing *")
+        else:
+            print("* class name missing *")
 
 
 if __name__ == '__main__':
