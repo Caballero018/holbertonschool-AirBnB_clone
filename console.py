@@ -2,6 +2,7 @@
 "Doc"
 import cmd
 from models.base_model import BaseModel
+from models import storage
 
 
 class HBNBCommand(cmd.Cmd, BaseModel):
@@ -43,6 +44,7 @@ class HBNBCommand(cmd.Cmd, BaseModel):
                 inpu = inp.split()
                 inpu[0] = inpu[0] + "()"
                 inpu[0] = eval(inpu[0])
+                inpu[1] = inpu[0].id
                 if inpu[0].id == inpu[1]:
                     print(inpu[0])
                 else:
@@ -53,7 +55,6 @@ class HBNBCommand(cmd.Cmd, BaseModel):
                 print("** instance id missing **")
         else:
             print("** class name missing **")
-
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
