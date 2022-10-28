@@ -44,7 +44,6 @@ class HBNBCommand(cmd.Cmd, BaseModel):
                 inpu = inp.split()
                 inpu[0] = inpu[0] + "()"
                 inpu[0] = eval(inpu[0])
-                inpu[1] = inpu[0].id
                 if inpu[0].id == inpu[1]:
                     print(inpu[0])
                 else:
