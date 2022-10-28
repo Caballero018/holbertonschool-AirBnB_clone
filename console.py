@@ -2,21 +2,13 @@
 "Doc"
 import cmd
 from models.base_model import BaseModel
+from models import storage
 import models
 
 
 class HBNBCommand(cmd.Cmd, BaseModel):
     "Doc"
     prompt = "(hbnb) "
-
-    class_id = {
-        "User": "user",
-        "BaseModel": "base_model",
-        "State": "state",
-        "City": "city",
-        "Amenity": "amenity",
-        "Place": "place",
-        "Review": "review"}
 
     def do_quit(self, inp):
         "Doc"
@@ -51,10 +43,10 @@ class HBNBCommand(cmd.Cmd, BaseModel):
         if inp:
             try:
                 inpu = inp.split()
-                inpu[0] = inpu[0] + "()"
-                inpu[0] = eval(inpu[0])
-                if inpu[0].id == inpu[1]:
-                    print(inpu[0])
+                obj_dic = storage.all()
+                obje_key = inpu[0] + "." + inpu[1]
+                if obje_key in obj_dic:
+                    print(obj_dic[obje_key])
                 else:
                     print("** no instance found **")
             except NameError:
@@ -64,32 +56,27 @@ class HBNBCommand(cmd.Cmd, BaseModel):
         else:
             print("** class name missing **")
 
-    def do_show(self, line):
-        """Prints the string representation of an
-            instance based on the class name and id"""
-        line_read = line.split(" ")
-        if line_read == ['']:
-            print("** class name missing **")
-            return
-        elif line_read[0] not in HBNBCommand.class_id.keys():
-            print("** class doesn't exist **")
-            return
-        elif len(line_read) < 2:
-            print("** instance id missing **")
-            return
-        conct = line_read[0] + "." + line_read[1]
-        if not models.storage._FileStorage__objects.get(conct):
-            print("** no instance found **")
+    def do_destroy(self, inp):
+        if inp:
+            try:
+                inpu = inp.split()
+                inpu[0] = inpu[0] + "()"
+                inpu[0] = eval(inpu[0])
+                if inpu[0].id == inpu[1]:
+                    del inpu[0].id
+                else:
+                    print("** no instance found **")
+            except NameError:
+                print("** class doesn't exist **")
+            except IndexError:
+                print("** instance id missing **")
         else:
-            obj = models.storage._FileStorage__objects[conct]
-            print(obj)
+            print("** class name missing **")
 
     def do_all(self, inp):
         if inp:
             inp = inp + "()"
             inpu = eval(inp)
-        
-
         else:
             print("** class name missing **")
 
