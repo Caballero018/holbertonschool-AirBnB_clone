@@ -103,7 +103,7 @@ class HBNBCommand(cmd.Cmd, BaseModel):
             if instance in objs.keys():
                 setattr(objs[instance], args[2], eval(args[3]))
             else:
-                print("** no instance found **")
+                print("** class doesn't exist **")
         except IndexError:
             pass
 
