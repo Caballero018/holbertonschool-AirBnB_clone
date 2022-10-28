@@ -3,12 +3,12 @@
 import cmd
 from models.base_model import BaseModel
 from models import storage
+import models
 
 
 class HBNBCommand(cmd.Cmd, BaseModel):
     "Doc"
     prompt = "(hbnb) "
-    Classes = ["BaseModel"]
 
     def do_quit(self, inp):
         "Doc"
@@ -55,8 +55,8 @@ class HBNBCommand(cmd.Cmd, BaseModel):
             else:
                 print("** no instance found **")
 
-    def to_destroy(self, inp):
-         if inp:
+    def do_destroy(self, inp):
+        if inp:
             try:
                 inpu = inp.split()
                 obj_dic = storage.all()
@@ -64,13 +64,20 @@ class HBNBCommand(cmd.Cmd, BaseModel):
                 if obje_key in obj_dic:
                     del obj_dic[obje_key]
                 else:
-                    print("* no instance found *")
+                    print("** no instance found **")
             except NameError:
-                print("* class doesn't exist *")
+                print("** class doesn't exist **")
             except IndexError:
-                print("* instance id missing *")
+                print("** instance id missing **")
         else:
-            print("* class name missing *")
+            print("** class name missing **")
+
+    def do_all(self, inp):
+        if inp:
+            inp = inp + "()"
+            inpu = eval(inp)
+        else:
+            print("** class name missing **")
 
 
 if __name__ == '__main__':
