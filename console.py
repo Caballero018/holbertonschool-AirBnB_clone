@@ -14,8 +14,10 @@ from models.review import Review
 class HBNBCommand(cmd.Cmd, BaseModel):
     "Doc"
     prompt = "(hbnb) "
-    Classes = ["BaseModel", "User", "Amenity", "City",
-                "Place", "Review", "State"]
+    Classes = [
+            "BaseModel", "User", "Amenity", "City",
+            "Place", "Review", "State"
+            ]
 
     def do_quit(self, inp):
         "Doc"
