@@ -10,8 +10,8 @@ class TestBaseModel(unittest.TestCase):
     ""
     def test_save(self):
         bas = BaseModel()
+        bas.res = "vac"
         bas.save()
-        self.assertFalse(bas.created_at == bas.updated_at)
 
     def test_to_dict(self):
         bas = BaseModel()
