@@ -90,7 +90,7 @@ class TestFileStorage(unittest.TestCase):
         all_objs = storage.all()
         for obj_id in all_objs.keys():
             obj = all_objs[obj_id]
-        self.assertTrue(obj)
+            self.assertTrue(obj)
 
     def test_file_existence(self):
         """
