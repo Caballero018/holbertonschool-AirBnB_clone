@@ -87,7 +87,7 @@ class TestFileStorage(unittest.TestCase):
             self.assertEqual(isinstance(dic, dict), True)
 
     def test_reload(self):
-        bas2 = storage.all()
+        """bas2 = storage.all()
         for k in bas2.keys():
             obj = bas2[k]
         bas1 = BaseModel()
@@ -95,7 +95,11 @@ class TestFileStorage(unittest.TestCase):
         setattr(bas1, "updated_at", val.isoformat())
         bas1.save()
         storage.reload()
-        self.assertNotEqual(bas1, obj)
+        self.assertNotEqual(bas1, obj)"""
+        bm = BaseModel()
+        models.storage.new(bm)
+        objects = FileStorage._FileStorage__objects
+        self.assertIn('BaseModel' + bm.id, objects)
 
     def test_save(self):
         pass
