@@ -97,7 +97,7 @@ class TestFileStorage(unittest.TestCase):
         storage.reload()
         self.assertNotEqual(bas1, obj)"""
         bm = BaseModel()
-        models.storage.new(bm)
+        storage.new(bm)
         objects = FileStorage._FileStorage__objects
         self.assertIn('BaseModel' + bm.id, objects)
 
