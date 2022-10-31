@@ -4,20 +4,20 @@ import json
 import unittest
 from models.base_model import BaseModel
 from models import storage
-from datetime import datetime
+import datetime
 
 
 class TestBaseModel(unittest.TestCase):
     ""
     def test_save(self):
         bas2 = storage.all()
-        for k in bas2.keys():
-            obj = bas2[k]
         bas1 = BaseModel()
-        val = datetime(2017, 9, 28, 21, 7, 25, 47381)
+        val = datetime.datetime(2017, 9, 28, 21, 7, 25, 47381)
         setattr(bas1, "updated_at", val.isoformat())
         bas1.save()
-        self.assertNotEqual(bas1, obj)
+        for k in bas2.keys():
+            obj = bas2[k]
+        self.assertEqual(bas1, obj)
 
 
     def test_to_dict(self):
