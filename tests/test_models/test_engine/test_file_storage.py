@@ -5,10 +5,10 @@
 import unittest
 import os
 import json
-import models
 
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
+from models import storage
 from models.amenity import Amenity
 from models.city import City
 from models.place import Place
@@ -87,21 +87,20 @@ class TestFileStorage(unittest.TestCase):
             self.assertEqual(isinstance(dic, dict), True)
 
     def test_reload(self):
-        rl = FileStorage()
-        rl.reload()
-        self.assertTrue(os.path.isfile(FileStorage._FileStorage__file_path))
+        all_objs = storage.all()
+        for obj_id in all_objs.keys():
+            obj = all_objs[obj_id]
+        self.assertTrue(obj)
 
     def test_file_existence(self):
         """
         Checks if methods from Storage Engine works.
         """
-
         with open("file.json") as f:
             self.assertTrue(len(f.read()) > 0)
 
     def test_docstrings(self):
         """Check the docString each function"""
-
         self.assertTrue(FileStorage.all.__doc__)
         self.assertTrue(hasattr(FileStorage, 'all'))
         self.assertTrue(FileStorage.new.__doc__)
