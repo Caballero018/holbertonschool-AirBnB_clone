@@ -4,6 +4,7 @@
 import unittest
 import os
 import json
+import datetime
 
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
@@ -86,12 +87,20 @@ class TestFileStorage(unittest.TestCase):
             self.assertEqual(isinstance(dic, dict), True)
 
     def test_reload(self):
-        a_storage = FileStorage()
         with open(FileStorage._FileStorage__file_path, "r", encoding="utf-8") as f:
             loaded_dict = json.load(f)
             for line in f:
                 self.assertEqual(line, "{}")
-        self.assertIs(a_storage.reload(), None)
+        self.assertIs(storage.reload(), None)
+
+    def test_save(self):
+        pass
+        """bas = BaseModel()
+        bas1 = BaseModel()
+        up = datetime.datetime(2017, 9, 28, 21, 7, 25, 47372)
+        bas.updated_at = up.fromisoformat()
+        bas1.save()
+        self.assertNotEqual(bas.updated_at, bas1.updated_at)"""
 
     def test_file_existence(self):
         """
