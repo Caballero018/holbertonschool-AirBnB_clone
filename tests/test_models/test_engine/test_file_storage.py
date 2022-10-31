@@ -92,9 +92,9 @@ class TestFileStorage(unittest.TestCase):
         setattr(bas1, "updated_at", val.isoformat())
         bas1.save()
         bas2 = storage.all()
-        self.assertNotEqual(bas1, bas2)
-        """with open("file.json") as f:
-            self.assertTrue(len(f.read()) > 0)"""
+        for k in bas2.keys():
+            obj = bas2[k]
+        self.assertEqual(bas1, obj)
 
     def test_save(self):
         pass
