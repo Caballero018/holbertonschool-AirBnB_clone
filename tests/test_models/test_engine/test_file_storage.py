@@ -87,7 +87,13 @@ class TestFileStorage(unittest.TestCase):
             self.assertEqual(isinstance(dic, dict), True)
 
     def test_reload(self):
-        """bas2 = storage.all()
+        bm = BaseModel()
+        models.storage.new(bm)
+        objects = FileStorage._FileStorage__objects
+        self.assertIn('BaseModel' + bm.id, objects)
+
+    def test_save(self):
+        bas2 = storage.all()
         for k in bas2.keys():
             obj = bas2[k]
         bas1 = BaseModel()
@@ -95,20 +101,7 @@ class TestFileStorage(unittest.TestCase):
         setattr(bas1, "updated_at", val.isoformat())
         bas1.save()
         storage.reload()
-        self.assertNotEqual(bas1, obj)"""
-        bm = BaseModel()
-        storage.new(bm)
-        objects = FileStorage._FileStorage__objects
-        self.assertIn('BaseModel' + bm.id, objects)
-
-    def test_save(self):
-        pass
-        """bas = BaseModel()
-        bas1 = BaseModel()
-        up = datetime.datetime(2017, 9, 28, 21, 7, 25, 47372)
-        bas.updated_at = up.fromisoformat()
-        bas1.save()
-        self.assertNotEqual(bas.updated_at, bas1.updated_at)"""
+        self.assertNotEqual(bas1, obj)
 
     def test_file_existence(self):
         """
