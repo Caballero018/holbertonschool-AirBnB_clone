@@ -94,6 +94,7 @@ class TestFileStorage(unittest.TestCase):
         bas2 = storage.all()
         for k in bas2.keys():
             obj = bas2[k]
+        bas3 = storage.reload()
         self.assertEqual(bas1, obj)
 
     def test_save(self):
