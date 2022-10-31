@@ -87,17 +87,14 @@ class TestFileStorage(unittest.TestCase):
             self.assertEqual(isinstance(dic, dict), True)
 
     def test_reload(self):
-        """bas = storage.all()
-        bas1 = storage.all()
-        value = datetime.datetime(2017, 9, 28, 21, 7, 25, 47381)
-        for key in bas.items():
-            if key == "updated_at":
-                setattr(bas, key, value.isoformat())
-        storage.save()
-        storage.reload()
-        self.assertNotEqual(bas["updated_at"], bas1["updated_at"])"""
-        with open("file.json") as f:
-            self.assertTrue(len(f.read()) > 0)
+        bas1 = BaseModel()
+        val = datetime.datetime(2017, 9, 28, 21, 7, 25, 47381)
+        setattr(bas1, "updated_at", val.isoformat())
+        bas1.save()
+        bas2 = storage.all()
+        self.assertNotEqual(bas1, bas2)
+        """with open("file.json") as f:
+            self.assertTrue(len(f.read()) > 0)"""
 
     def test_save(self):
         pass
