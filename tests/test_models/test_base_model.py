@@ -10,14 +10,14 @@ from datetime import datetime
 class TestBaseModel(unittest.TestCase):
     ""
     def test_save(self):
-        bas = BaseModel()
-        old_created_at = bas.created_at
-        old_updated_at = bas.updated_at
-        bas.save()
-        new_created_at = bas.created_at
-        new_updated_at = bas.updated_at
-        self.assertNotEqual(old_updated_at, new_updated_at)
-        self.assertEqual(old_created_at, new_created_at)
+        bas2 = storage.all()
+        for k in bas2.keys():
+            obj = bas2[k]
+        bas1 = BaseModel()
+        val = datetime(2017, 9, 28, 21, 7, 25, 47381)
+        setattr(bas1, "updated_at", val.isoformat())
+        bas1.save()
+        self.assertNotEqual(bas1, obj)
 
 
     def test_to_dict(self):
