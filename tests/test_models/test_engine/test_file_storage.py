@@ -89,7 +89,7 @@ class TestFileStorage(unittest.TestCase):
     def test_reload(self):
         rl = FileStorage()
         rl.reload()
-        os.path.isfile(FileStorage._FileStorage__file_path)
+        self.assertTrue(os.path.isfile(FileStorage._FileStorage__file_path))
 
     def test_file_existence(self):
         """
