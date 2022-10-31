@@ -87,10 +87,6 @@ class TestFileStorage(unittest.TestCase):
 
     def test_reload(self):
         a_storage = FileStorage()
-        try:
-            os.remove("file.json")
-        except:
-            pass
         with open("file.json", "w") as f:
             f.write("{}")
         with open("file.json", "r") as r:
