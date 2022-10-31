@@ -12,12 +12,10 @@ class TestBaseModel(unittest.TestCase):
     def test_save(self):
         bas2 = storage.all()
         bas1 = BaseModel()
-        val = datetime.datetime(2017, 9, 28, 21, 7, 25, 47381)
+        val = datetime.datetime.utcnow()
         setattr(bas1, "updated_at", val.isoformat())
         bas1.save()
-        for k in bas2.keys():
-            obj = bas2[k]
-        self.assertEqual(bas1, obj)
+        self.assertNotEqual(bas1.updated_at, datetime.datetime.now())
 
 
     def test_to_dict(self):
