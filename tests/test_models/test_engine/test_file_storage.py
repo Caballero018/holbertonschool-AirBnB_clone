@@ -87,7 +87,9 @@ class TestFileStorage(unittest.TestCase):
             self.assertEqual(isinstance(dic, dict), True)
 
     def test_reload(self):
-        pass
+        rl = FileStorage()
+        rl.reload()
+        os.path.isfile(FileStorage._FileStorage__file_path)
 
     def test_file_existence(self):
         """
