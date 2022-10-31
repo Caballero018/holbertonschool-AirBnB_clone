@@ -56,6 +56,12 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(type(obj), dict)
         self.assertIs(obj, self.storage._FileStorage__objects)
 
+    def test__file_path(self):
+        bas = FileStorage()
+        file_j = "file.json"
+        bas.__file_path = "file.json"
+        self.assertEqual(bas.__file_path, file_j)
+
     def test_storage_empty(self):
         """check the storage is not empty"""
         self.assertIsNotNone(self.storage.all())
@@ -81,6 +87,9 @@ class TestFileStorage(unittest.TestCase):
             dic = json.load(f)
 
             self.assertEqual(isinstance(dic, dict), True)
+
+    def test_reload(self):
+        pass
 
     def test_file_existence(self):
         """
