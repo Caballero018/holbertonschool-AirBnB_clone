@@ -87,10 +87,17 @@ class TestFileStorage(unittest.TestCase):
             self.assertEqual(isinstance(dic, dict), True)
 
     def test_reload(self):
-        all_objs = storage.all()
-        for obj_id in all_objs.keys():
-            obj = all_objs[obj_id]
-            self.assertTrue(obj)
+        a_storage = FileStorage()
+        try:
+            os.remove("file.json")
+        except:
+            pass
+        with open("file.json", "w") as f:
+            f.write("{}")
+        with open("file.json", "r") as r:
+            for line in r:
+                self.assertEqual(line, "{}")
+        self.assertIs(a_storage.reload(), None)
 
     def test_file_existence(self):
         """
