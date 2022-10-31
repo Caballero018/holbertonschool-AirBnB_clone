@@ -57,10 +57,8 @@ class TestFileStorage(unittest.TestCase):
         self.assertIs(obj, self.storage._FileStorage__objects)
 
     def test__file_path(self):
-        bas = FileStorage()
-        file_j = "file.json"
-        bas.__file_path = "file.json"
-        self.assertEqual(bas.__file_path, file_j)
+        fp = FileStorage()
+        self.assertTrue(FileStorage._FileStorage__file_path)
 
     def test_storage_empty(self):
         """check the storage is not empty"""
@@ -75,7 +73,7 @@ class TestFileStorage(unittest.TestCase):
         """check the new user"""
         obj = self.storage.all()
         self.u1.id = 1234
-        self.u1.name = "Julien"
+        self.u1.name = "Juan"
         self.storage.new(self.u1)
         key = "{}.{}".format(self.u1.__class__.__name__, self.u1.id)
         self.assertIsNotNone(obj[key])
