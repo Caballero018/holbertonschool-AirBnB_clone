@@ -11,13 +11,10 @@ class TestBaseModel(unittest.TestCase):
     ""
     def test_save(self):
         bas = BaseModel()
-        old_created_at = bas.created_at
         old_updated_at = bas.updated_at
         bas.save()
-        new_created_at = bas.created_at
         new_updated_at = bas.updated_at
         self.assertNotEqual(old_updated_at, new_updated_at)
-        self.assertEqual(old_created_at, new_created_at)
 
 
     def test_to_dict(self):
