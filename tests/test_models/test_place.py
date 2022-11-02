@@ -13,7 +13,7 @@ from models.base_model import BaseModel
 class TestPlace(unittest.TestCase):
     def setUpClass(cls):
         cls.place1 = Place()
-        cls.place1.city_id = "Florida"
+        cls.place1.city_id = "Miami"
         cls.place1.user_id = "Alejandro"
         cls.place1.name = "Sant Lois Hotel"
         cls.place1.description = "Hotel 5 starts with "
