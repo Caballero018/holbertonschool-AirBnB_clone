@@ -11,7 +11,7 @@ from models.base_model import BaseModel
 
 
 class TestPlace(unittest.TestCase):
-    def setUpClass(cls):
+    def setUpClass(self, cls):
         cls.place1 = Place()
         cls.place1.city_id = "Miami"
         cls.place1.user_id = "Alejandro"
@@ -26,7 +26,7 @@ class TestPlace(unittest.TestCase):
         cls.place1.amenity_ids = []
 
     @classmethod
-    def tearDownClass(cls):
+    def tearDownClass(self, cls):
         del cls.place1
         try:
             os.remove("file.json")
