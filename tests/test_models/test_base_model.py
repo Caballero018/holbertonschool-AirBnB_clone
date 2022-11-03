@@ -9,12 +9,22 @@ from datetime import datetime
 
 class TestBaseModel(unittest.TestCase):
     ""
+    def setUpClass(clas):
+        cls.base1 = BaseModel()
+        cls.base1.name = "Greg"
+        cls.base1.my_number = 29
+    
+    @classmethod
+    def tearDownClass(cls):
+        del cls.base1
+        try:
+            os.remove("file.json")
+        except FileNotFoundError:
+            pass
+
     def test_save(self):
-        bas = BaseModel()
-        old_updated_at = bas.updated_at
-        bas.save()
-        new_updated_at = bas.updated_at
-        self.assertNotEqual(old_updated_at, new_updated_at)
+        self.base1.save()
+        self.assertNotEqual(self.base1.created_at, self.base1.updated_at)
 
 
     def test_to_dict(self):
