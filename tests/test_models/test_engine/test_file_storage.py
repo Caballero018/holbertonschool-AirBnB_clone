@@ -117,7 +117,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_reload_with_arg(self):
         with self.assertRaises(TypeError):
-            models.storage.reload(None)
+            storage.reload(None)
 
     """def test_save(self):
         bas2 = storage.all()
