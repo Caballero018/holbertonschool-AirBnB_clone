@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """
-
+module place
 """
 
 from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    """class"""
+    """class Place about all the information about the place"""
     city_id = ""
     user_id = ""
     name = ""

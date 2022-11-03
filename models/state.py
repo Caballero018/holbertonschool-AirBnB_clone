@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """
-
+module satate
 """
 
 from models.base_model import BaseModel
 
 
 class State(BaseModel):
-    """class"""
+    """Class state of place"""
     name = ""
