@@ -112,6 +112,13 @@ class TestFileStorage(unittest.TestCase):
         self.assertIn("Amenity." + am.id, objs)
         self.assertIn("Review." + rv.id, objs)
 
+        def test_reload_no_file(self):
+        self.assertRaises(FileNotFoundError, storage.reload())
+
+    def test_reload_with_arg(self):
+        with self.assertRaises(TypeError):
+            models.storage.reload(None)
+
     """def test_save(self):
         bas2 = storage.all()
         for k in bas2.keys():
