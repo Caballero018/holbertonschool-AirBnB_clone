@@ -20,16 +20,8 @@ class TestUser(unittest.TestCase):
         clas.new_user.email = "new_class@holbertonstudents.com"
         clas.new_user.password = "new_class123"
 
-    @classmethod
-    def tearDownClass(clas):
-        del clas.new_user
-        try:
-            os.remove("file.json")
-        except FileNotFoundError:
-            pass
-
     def test_subclass(self):
-        self.assertTrue(isssubclass(self.new_user.__class__, BaseModel), True)
+        self.assertTrue(issubclass(self.new_user.__class__, BaseModel), True)
 
     def test_is_None(self):
         self.assertIsNotNone(User.__doc__)

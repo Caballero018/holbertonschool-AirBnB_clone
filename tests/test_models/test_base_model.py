@@ -9,14 +9,14 @@ from datetime import datetime
 
 class TestBaseModel(unittest.TestCase):
     ""
-    def setUpClass(clas):
-        cls.base1 = BaseModel()
-        cls.base1.name = "Greg"
-        cls.base1.my_number = 29
+    def setUpClass(self):
+        self.base1 = BaseModel()
+        self.base1.name = "Greg"
+        self.base1.my_number = 29
     
     @classmethod
     def tearDownClass(cls):
-        del cls.base1
+        del self.base1
         try:
             os.remove("file.json")
         except FileNotFoundError:
