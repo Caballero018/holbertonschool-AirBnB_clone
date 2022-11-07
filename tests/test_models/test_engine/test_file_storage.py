@@ -88,11 +88,13 @@ class TestFileStorage(unittest.TestCase):
             self.assertEqual(isinstance(dic, dict), True)
 
     def test_reload(self):
-        bm = BaseModel()
-        storage.new(bm)
+        new = BaseModel()
         storage.save()
         storage.reload()
-        objs = FileStorage._FileStorage__objects
+        for obj in storage.all().values():
+            loaded = obj
+        self.assertEqual(new.to_dict()['id'], loaded.to_dict()['id'])
+
 
     def test_reload_with_arg(self):
         with self.assertRaises(TypeError):
